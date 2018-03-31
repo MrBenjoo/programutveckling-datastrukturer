@@ -1,0 +1,49 @@
+package p2;
+
+import java.awt.BorderLayout;
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+
+public class Viewer extends JPanel {
+	JComboBox<String> from = new JComboBox<String>(P2Controller.toArray(P2Controller.readPlaces("files/places.txt")));
+	JComboBox<String> to = new JComboBox<String>(P2Controller.toArray(P2Controller.readPlaces("files/places.txt")));
+	JTextArea txtArea = new JTextArea();
+	JButton btnSearch = new JButton("Sök");
+	JRadioButton btnDepth = new JRadioButton("Sökning på djupet", true);
+	JRadioButton btnBreadth = new JRadioButton("Sökning på bredden", false);
+	JRadioButton btnDijkstra = new JRadioButton("Dijkstra", false);
+	JPanel pnlMap = new JPanel();
+	JPanel southPanel = new JPanel();
+	JPanel radioPanel = new JPanel();
+	JTabbedPane tabbedPane = new JTabbedPane();
+	ButtonGroup bGroup = new ButtonGroup();
+
+	public Viewer(MapView map) {
+		setLayout(new BorderLayout());
+		tabbedPane.add("Karta", pnlMap);
+		tabbedPane.add("Text", txtArea);
+		pnlMap.add(map, BorderLayout.CENTER);
+		add(tabbedPane, BorderLayout.CENTER);
+
+		// Sökalternativ
+		radioPanel.setLayout(new GridLayout(3, 1));
+		radioPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Sökalternativ"));
+		radioPanel.add(btnDepth);
+		radioPanel.add(btnBreadth);
+		radioPanel.add(btnDijkstra);
+		southPanel.add(radioPanel, BorderLayout.EAST);
+
+		// SouthF
+		southPanel.add(btnSearch, BorderLayout.SOUTH);
+		southPanel.add(from, BorderLayout.NORTH);
+		southPanel.add(to, BorderLayout.CENTER);
+		add(southPanel, BorderLayout.SOUTH);
+
+		bGroup.add(btnDepth);
+		bGroup.add(btnBreadth);
+		bGroup.add(btnDijkstra);
+
+	}
+
+}

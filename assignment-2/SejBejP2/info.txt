@@ -1,0 +1,11 @@
+Jag använde en annan layout i min viewer klass (miglayout) som jag fick ladda ner från internet
+Om du inte orkar ladda ner denna så ersätt viewer klassen som finns i P2 med viewer klassen i BorderLayout mappen
+
+Miglayout:
+	http://www.migcalendar.com/miglayout/versions/
+
+	Ladda ner 4.0 (miglayout-4.0.jar)
+
+	Högerklicka på projekt filen med källkodsfilerna inuti, välj properties och sedan tryck Add External Jars.. 
+	
+	Därefter väljer du JAR filen och nu borde det funka.
